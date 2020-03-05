@@ -23,4 +23,3 @@
 - hosts: edge
   roles:
   - nginx
-  - cli

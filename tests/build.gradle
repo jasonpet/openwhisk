@@ -224,6 +224,13 @@ dependencies {
     swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.9'
 }
 
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.additionalParameters = gradle.scala.compileFlags
+    configure(scalaCompileOptions.forkOptions) {
+        memoryMaximumSize = '1g'
+    }
+}
+
 def keystorePath = new File(sourceSets.test.scala.outputDir, 'keystore')
 task deleteKeystore(type: Delete) {
     delete keystorePath
